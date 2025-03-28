@@ -5,10 +5,32 @@ import { Card, CardContent } from "./Card";
 const LandingPage = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [contactSubmitted, setContactSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setContactSubmitted(true);
+        form.reset();
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (
@@ -54,8 +76,6 @@ const LandingPage = () => {
           )}
         </div>
 
-
-
         {/* Features Section - Compacted */}
         <section className="w-full max-w-4xl">
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">What We Offer</h2>
@@ -75,8 +95,8 @@ const LandingPage = () => {
           </div>
         </section>
 
-                {/* New About Us Section with Creative Design */}
-                <section className="w-full max-w-4xl">
+        {/* New About Us Section with Creative Design */}
+        <section className="w-full max-w-4xl">
           <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">About Us</h2>
           <div className="relative">
             {/* Timeline Design */}
@@ -106,39 +126,66 @@ const LandingPage = () => {
           </div>
         </section>
 
-        {/* New Contact Form Section */}
+        {/* Contact Form Section - Updated with Web3Forms */}
         <section className="w-full max-w-4xl bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10">
           <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">Contact Us</h2>
-          <form className="space-y-4 max-w-lg mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+          {!contactSubmitted ? (
+            <form onSubmit={handleContactSubmit} className="space-y-4 max-w-lg mx-auto">
+              {/* Add your Web3Forms access key */}
+              <input 
+                type="hidden" 
+                name="access_key" 
+                value="d18f06af-0e89-4f7e-8349-c0bee22e0688"
+              />
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    required
+                    className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                    className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
               </div>
               <div>
-                <input
-                  type="email"
-                  placeholder="Email"
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  required
+                  rows={4}
                   className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+                ></textarea>
               </div>
+              <div className="text-center">
+                <Button 
+                  type="submit"
+                  className="bg-blue-600 text-white font-bold px-8 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Send Message
+                </Button>
+              </div>
+            </form>
+          ) : (
+            <div className="text-center p-8">
+              <div className="text-green-400 text-xl font-semibold mb-2">
+                Thank you for your message!
+              </div>
+              <p className="text-blue-100">
+                We'll get back to you as soon as possible.
+              </p>
             </div>
-            <div>
-              <textarea
-                placeholder="Your Message"
-                rows={4}
-                className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              ></textarea>
-            </div>
-            <div className="text-center">
-              <Button className="bg-blue-600 text-white font-bold px-8 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                Send Message
-              </Button>
-            </div>
-          </form>
+          )}
         </section>
       </div>
 
