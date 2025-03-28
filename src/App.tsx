@@ -6,6 +6,7 @@ const LandingPage = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,6 +15,7 @@ const LandingPage = () => {
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
     const form = e.currentTarget;
     const formData = new FormData(form);
 
@@ -30,6 +32,8 @@ const LandingPage = () => {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -126,7 +130,7 @@ const LandingPage = () => {
           </div>
         </section>
 
-        {/* Contact Form Section - Updated with Web3Forms */}
+        {/* Contact Form Section - Updated with loading state */}
         <section className="w-full max-w-4xl bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10">
           <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">Contact Us</h2>
           {!contactSubmitted ? (
@@ -170,9 +174,21 @@ const LandingPage = () => {
               <div className="text-center">
                 <Button 
                   type="submit"
-                  className="bg-blue-600 text-white font-bold px-8 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  disabled={isLoading}
+                  className={`bg-blue-600 text-white font-bold px-8 py-2 rounded-lg transition-colors relative ${
+                    isLoading ? 'bg-blue-400 cursor-not-allowed' : 'hover:bg-blue-700'
+                  }`}
                 >
-                  Send Message
+                  {isLoading ? (
+                    <>
+                      <span className="opacity-0">Send Message</span>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      </div>
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </Button>
               </div>
             </form>
