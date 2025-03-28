@@ -27,9 +27,6 @@ const LandingPage = () => {
 
         {/* Call to Action - Streamlined */}
         <div className="flex flex-wrap justify-center items-center gap-3">
-          <Button className="bg-white text-blue-800 font-bold px-5 py-2 rounded-lg hover:bg-blue-200 shadow-lg transform hover:scale-105 transition-transform">
-            Learn More
-          </Button>
           {!submitted ? (
             <form
               onSubmit={handleSubmit}
@@ -57,6 +54,8 @@ const LandingPage = () => {
           )}
         </div>
 
+
+
         {/* Features Section - Compacted */}
         <section className="w-full max-w-4xl">
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">What We Offer</h2>
@@ -74,6 +73,72 @@ const LandingPage = () => {
               </Card>
             ))}
           </div>
+        </section>
+
+                {/* New About Us Section with Creative Design */}
+                <section className="w-full max-w-4xl">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">About Us</h2>
+          <div className="relative">
+            {/* Timeline Design */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-400/30"></div>
+            
+            <div className="space-y-12">
+              <div className="flex items-center justify-center">
+                <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 max-w-lg relative">
+                  <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-6 h-6 bg-blue-400 rounded-full border-4 border-blue-900"></div>
+                  <h3 className="text-xl font-bold text-blue-200 mb-2">Innovation at Heart</h3>
+                  <p className="text-blue-100/80">
+                    At Buzz Frost, we're passionate about creating innovative SaaS solutions that transform how businesses operate. Our mission is to build tools that make complex problems simple.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center">
+                <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 max-w-lg relative">
+                  <div className="absolute left-1/2 -translate-x-1/2 -top-3 w-6 h-6 bg-blue-400 rounded-full border-4 border-blue-900"></div>
+                  <h3 className="text-xl font-bold text-blue-200 mb-2">Global Reach</h3>
+                  <p className="text-blue-100/80">
+                    From our inception, we've focused on building scalable solutions that serve businesses worldwide. Our diverse team brings global perspectives to every project.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* New Contact Form Section */}
+        <section className="w-full max-w-4xl bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">Contact Us</h2>
+          <form className="space-y-4 max-w-lg mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            </div>
+            <div>
+              <textarea
+                placeholder="Your Message"
+                rows={4}
+                className="w-full px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-blue-200/60 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              ></textarea>
+            </div>
+            <div className="text-center">
+              <Button className="bg-blue-600 text-white font-bold px-8 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Send Message
+              </Button>
+            </div>
+          </form>
         </section>
       </div>
 
