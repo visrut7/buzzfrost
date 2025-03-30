@@ -81,15 +81,7 @@ const ContactPage = () => {
             <ul className="space-y-2 text-blue-100/80">
               <li className="flex justify-between">
                 <span>Monday - Friday:</span>
-                <span className="font-semibold">9:00 AM - 6:00 PM EST</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Saturday:</span>
-                <span className="font-semibold">10:00 AM - 2:00 PM EST</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sunday:</span>
-                <span className="font-semibold">Closed</span>
+                <span className="font-semibold">9:00 AM - 6:00 PM IST</span>
               </li>
             </ul>
           </div>
