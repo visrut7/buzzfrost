@@ -14,17 +14,14 @@ const Navbar = () => {
           <Link to="/" className="px-3 py-2 rounded-md hover:bg-blue-800 transition-colors">
             Home
           </Link>
+          <Link to="/services" className="px-3 py-2 rounded-md hover:bg-blue-800 transition-colors">
+            Services
+          </Link>
           <Link to="/about" className="px-3 py-2 rounded-md hover:bg-blue-800 transition-colors">
             About Us
           </Link>
           <Link to="/contact" className="px-3 py-2 rounded-md hover:bg-blue-800 transition-colors">
             Contact Us
-          </Link>
-          <Link to="/privacy-policy" className="px-3 py-2 rounded-md hover:bg-blue-800 transition-colors">
-            Privacy Policy
-          </Link>
-          <Link to="/terms" className="px-3 py-2 rounded-md hover:bg-blue-800 transition-colors">
-            Terms & Conditions
           </Link>
         </div>
       </div>
