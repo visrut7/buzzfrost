@@ -5,8 +5,13 @@ const Navbar = () => {
     <nav className="w-full bg-blue-950 text-white shadow-md py-4 px-4 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="flex items-center mb-3 md:mb-0">
-          <Link to="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-white">
-            Buzz Frost
+          <Link to="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-white flex items-center">
+          <span>
+            <img src="/favicon/favicon.ico" alt="Buzz Frost" className="w-8 h-8 mr-2" />
+          </span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-white">
+              Buzz Frost
+            </span>
           </Link>
         </div>
         
