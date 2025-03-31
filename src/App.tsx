@@ -7,6 +7,7 @@ import TermsPage from "./pages/TermsPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import ContactPage from "./pages/ContactPage";
 import ServicesPage from "./pages/ServicesPage";
+import BusinessProposalPage from "./pages/BusinessProposalPage";
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsPage />} />
+        <Route path="/business-proposal" element={<BusinessProposalPage />} />
       </Routes>
       <Footer />
     </div>
