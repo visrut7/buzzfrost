@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     padding: 40,
     backgroundColor: "#0c2a59", // Dark blue background matching site
     color: "#ffffff",
+    position: "relative",
   },
   section: {
     marginBottom: 20,
@@ -103,18 +104,24 @@ const styles = StyleSheet.create({
   },
 });
 
-// Define the PDF Document
+// Define the PDF Document broken into three pages
 const BusinessProposalDocument = () => (
   <Document>
+    {/* Page 1 - Cover Page */}
     <Page size="A4" style={styles.page}>
-      {/* Cover Page */}
       <View style={styles.header}>
         <Image src={logo} style={styles.logo} />
         <Text style={styles.title}>BUSINESS PROPOSAL</Text>
         <Text style={styles.subtitle}>Custom Software Solutions</Text>
         <Text style={styles.date}>{new Date().toLocaleDateString()}</Text>
       </View>
+      <Text style={styles.footer}>
+        Buzz Frost - Transforming complex ideas into elegant software solutions
+      </Text>
+    </Page>
 
+    {/* Page 2 - Company Info & Deliverables */}
+    <Page size="A4" style={styles.page}>
       <View style={styles.section}>
         <Text style={styles.heading}>WHO WE ARE</Text>
         <Text style={styles.content}>
@@ -152,12 +159,12 @@ const BusinessProposalDocument = () => (
           </View>
         </View>
       </View>
-
       <Text style={styles.footer}>
         Buzz Frost - Transforming complex ideas into elegant software solutions
       </Text>
     </Page>
 
+    {/* Page 3 - Process, Expertise & Terms */}
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
         <Text style={styles.heading}>OUR PROCESS</Text>
@@ -210,7 +217,6 @@ const BusinessProposalDocument = () => (
           7. Final deliverables will be provided upon receipt of final payment.
         </Text>
       </View>
-
       <Text style={styles.footer}>
         Contact us at: visrut@buzzfrost.com | www.buzzfrost.com
       </Text>
